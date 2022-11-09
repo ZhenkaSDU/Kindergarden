@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:the_basics/core/common/custom_button.dart';
-import 'package:the_basics/core/common/custom_text_field.dart';
-import 'package:the_basics/core/constants/global_variables.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
