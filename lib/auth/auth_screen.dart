@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:the_basics/auth/auth_code_screen.dart';
 import 'package:the_basics/core/common/custom_button.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -17,9 +18,11 @@ class _AuthScreenState extends State<AuthScreen> {
       body: Column(
         children: [
           SvgPicture.asset("assets/images/svg/pho.svg"),
-          const SizedBox(height: 5,),
+          const SizedBox(height: 14,),
           const Text("Enter phone number",style: TextStyle(fontSize: 32),),
+          const SizedBox(height: 14,),
           const Text("Phone Number",style: TextStyle(fontSize: 14),),
+          const SizedBox(height: 14,),
           const SizedBox(
             width: 310,
             child: TextField(
@@ -50,7 +53,11 @@ class _AuthScreenState extends State<AuthScreen> {
           const SizedBox(height: 10,),
           SizedBox(
             width: 310,
-            child: CustomButton(text: "Connect", onTap: (){},color: Colors.green,)
+            child: CustomButton(text: "Connect", onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder:
+              (context) => AuthCodeScreen()
+              ));
+            },color: Colors.green,)
           ),
           const SizedBox(height: 20,),
           Row(
