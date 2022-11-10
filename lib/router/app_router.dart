@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:the_basics/auth/auth_screen.dart';
+import 'package:the_basics/features/auth/auth_screen.dart';
 
 part 'app_router.gr.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../core/common/custom_button.dart';
+import '../../core/common/custom_button.dart';
 
 class AuthCodeScreen extends StatefulWidget {
   const AuthCodeScreen({super.key});
@@ -16,13 +16,13 @@ class _AuthCodeScreen extends State<AuthCodeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset("assets/images/svg/pho.svg"),
+            Image.asset("assets/images/svg/pho3.png"),
             const SizedBox(height: 14,),
-            const Text("Enter phone number",style: TextStyle(fontSize: 32),),
-            const SizedBox(height: 14,),
-            const Text("Phone Number",style: TextStyle(fontSize: 14),),
-            const SizedBox(height: 14,),
+            const Text("Phone Number Verification",style: TextStyle(fontSize: 32),),
+            const Text("Verification code has been sent to 0524061177",style: TextStyle(fontSize: 14),),
+            const SizedBox(height: 30,),
             const SizedBox(
               width: 310,
               child: TextField(
@@ -35,34 +35,18 @@ class _AuthCodeScreen extends State<AuthCodeScreen> {
               ),
             ),
             const SizedBox(height: 10,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text("I agree to the "),
-                GestureDetector(
-                    onTap: (){},
-                    child: const Text("Terms of Use",style: TextStyle(color: Colors.blue),)
-                ),
-                const Text(" and "),
-                GestureDetector(
-                    onTap: (){},
-                    child: const Text("Privacy Policy",style: TextStyle(color: Colors.blue),)
-                ),
-              ],
-            ),
-            const SizedBox(height: 10,),
             SizedBox(
                 width: 310,
-                child: CustomButton(text: "Connect", onTap: (){},color: Colors.green,)
+                child: CustomButton(text: "Login", onTap: (){},color: Colors.green,)
             ),
             const SizedBox(height: 20,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children:  [
-                const Text("Does your institute register?"),
+                const Text("Didn't receive ?"),
                 GestureDetector(
                     onTap: (){},
-                    child: const Text("Contact us",style: TextStyle(color: Colors.blue),)
+                    child: const Text("Send again",style: TextStyle(color: Colors.blue),)
                 ),
               ],
             ),

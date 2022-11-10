@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:the_basics/auth/auth_screen.dart';
+import 'package:the_basics/features/auth/auth_screen.dart';
 import 'package:the_basics/core/constants/global_variables.dart';
 import 'package:the_basics/core/get_it/injection_container.dart';
 import 'package:the_basics/core/utils/hive/hive_init.dart';
