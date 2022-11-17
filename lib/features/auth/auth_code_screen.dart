@@ -1,16 +1,35 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:the_basics/home/home_screen.dart';
 
 import '../../core/common/custom_button.dart';
 
 class AuthCodeScreen extends StatefulWidget {
-  const AuthCodeScreen({super.key});
+  final String verID;
+  const AuthCodeScreen({super.key, required this.verID});
 
   @override
-  State<AuthCodeScreen> createState() => _AuthCodeScreen();
+  State<AuthCodeScreen> createState() => _AuthCodeScreen(verID);
 }
 
 class _AuthCodeScreen extends State<AuthCodeScreen> {
+  final String verID;
+  // String otpPin = "dddd";
+
+  _AuthCodeScreen(this.verID);
+  Future<void> verifyOTP() async{
+    await FirebaseAuth.instance.signInWithCredential(
+      PhoneAuthProvider.credential(
+          verificationId: verID,
+          smsCode: phoneController.text
+      )
+    ).whenComplete(() {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => HomeScreen(),)
+      );
+    });
+  }
   TextEditingController phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -37,7 +56,9 @@ class _AuthCodeScreen extends State<AuthCodeScreen> {
             const SizedBox(height: 10,),
             SizedBox(
                 width: 310,
-                child: CustomButton(text: "Login", onTap: (){},color: Colors.green,)
+                child: CustomButton(text: "Login", onTap: (){
+                  verifyOTP();
+                },color: Colors.green,)
             ),
             const SizedBox(height: 20,),
             Row(
