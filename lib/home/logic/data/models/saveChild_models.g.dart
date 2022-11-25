@@ -15,9 +15,9 @@ SaveChild _$SaveChildFromJson(Map<String, dynamic> json) => SaveChild(
     );
 
 Map<String, dynamic> _$SaveChildToJson(SaveChild instance) => <String, dynamic>{
-      'session_id': instance.session_id,
+      'session_id': instance.sessionId,
       'id': instance.id,
-      'first_name': instance.first_name,
-      'last_name': instance.last_name,
+      'first_name': instance.firstName,
+      'last_name': instance.lastName,
       'parents': instance.parents,
     };

@@ -1,21 +1,24 @@
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import '../datasources/save_datasources.dart';
+import 'package:the_basics/home/logic/data/datasources/save_datasources.dart';
 
-import '../models/saveChild_models.dart';
-
-abstract class SaveChildRepository{
-  Future<String> getCheck();
+abstract class SaveRepository {
+  Future<String> saveChildRes(String sessionId, String id, String firstName,
+      String lastName, String parents);
 }
 
-class SaveChildRepositoryImpl extends SaveChildRepository{
-  final SaveChildRemoteDataSource saveChildRemoteDataSource;
+class SaveRepositoryImpl implements SaveRepository {
+  final SaveDataSource saveDataSource;
 
-  SaveChildRepositoryImpl(this.saveChildRemoteDataSource);
+  SaveRepositoryImpl(this.saveDataSource);
 
   @override
-  Future<String> getCheck() async {
-    Response data = await saveChildRemoteDataSource.getCheck();
-    return data.data["res"];
+  Future<String> saveChildRes(String sessionId, String id, String firstName,
+      String lastName, String parents) async {
+    Response response = await saveDataSource.saveChildRes(
+        sessionId, id, firstName, lastName, parents);
+    log("$response + repository");
+    return response.data['res'];
   }
 }

@@ -1,14 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:the_basics/features/auth/auth_screen.dart';
 import 'package:the_basics/core/constants/global_variables.dart';
 import 'package:the_basics/core/get_it/injection_container.dart';
 import 'package:the_basics/core/utils/hive/hive_init.dart';
-import 'package:the_basics/home/home_screen.dart';
+import 'package:the_basics/home/logic/bloc/save_child_bloc.dart';
+import 'package:the_basics/home/m2_add_screen.dart';
 
 import 'firebase_options.dart';
-
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +32,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<SaveChildBloc>(
+          create: (_) => sl(),
+        ),
+      ],
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Kindergarden',
         theme: ThemeData(
@@ -43,9 +49,8 @@ class _MyAppState extends State<MyApp> {
                 color: GlobalVariables.blackColor,
               ),
             )),
-      // home: const HomeScreen(),
-      // home: const AuthScreen(),
-      home: const HomeScreen(),
-      );
+        home: const M2AddScreen(),
+      ),
+    );
   }
 }
