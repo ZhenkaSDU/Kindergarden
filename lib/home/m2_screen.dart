@@ -5,10 +5,10 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:the_basics/core/get_it/injection_container.dart';
-import 'package:the_basics/features/auth/auth_code_screen.dart';
-import 'package:the_basics/core/common/custom_button.dart';
 import 'package:the_basics/logic/bloc/auth_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'm2_add_screen.dart';
 
 class M2Screen extends StatefulWidget {
   const M2Screen({super.key});
@@ -98,11 +98,19 @@ class _M2ScreenState extends State<M2Screen> {
                       children: [
                         Text("List of the children"),
                         SizedBox(height: 10,),
-                        Row(
-                          children: [
-                            Icon(Icons.add_circle),
-                            Text("There are no children register")
-                          ],
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const M2AddScreen()));
+                          },
+                          child: Row(
+                            children: [
+                              Icon(Icons.add_circle),
+                              Text("There are no children register")
+                            ],
+                          ),
                         ),
                         SizedBox(height: 250,),
                         Row(
